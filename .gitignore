@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+
+# Node
+node_modules/
+dist/
+build/
+
+# IDE and OS
+.DS_Store
+.vscode/
+
+# Backups
+backups/
+*.bak
