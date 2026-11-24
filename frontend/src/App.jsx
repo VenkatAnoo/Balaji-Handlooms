@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { LayoutDashboard, Package, ArrowDownToLine, ShoppingBag, Users, History, LogOut, Menu, X, Plus, Search, Edit3, Trash2, IndianRupee, Layers, TrendingUp, Wallet, CheckCircle2, AlertCircle, ChevronDown, RefreshCw, ShieldCheck, Sparkles } from 'lucide-react';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-const API = `${(import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')}/api`; const money = n => '₹' + Number(n || 0).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+const API = `${(import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')}/api`; 
+const money = n => '₹' + Number(n || 0).toLocaleString('en-IN', { maximumFractionDigits: 2 });
 const today = v => v ? new Date(v).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
 async function request(path, options = {}) { const token = localStorage.getItem('sf_token'); const r = await fetch(API + path, { ...options, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}), ...options.headers } }); const data = await r.json().catch(() => ({})); if (!r.ok) throw Error(typeof data.detail === 'string' ? data.detail : 'Request failed'); return data }
 const adminNav = [['dashboard', 'Overview', LayoutDashboard], ['sarees', 'Saree Catalog', Package], ['new-collection', 'Add Saree Collection', Plus], ['collected', 'Collections', ArrowDownToLine], ['makers', 'Saree Makers', Users], ['maker-daily', 'Daily Maker Tracker', Layers], ['users', 'Team Members', Users], ['audit', 'Activity Log', History], ['password', 'Change Password', ShieldCheck]];
